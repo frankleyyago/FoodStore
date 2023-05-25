@@ -14,12 +14,12 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: roboto, sans-serif;
     list-styles: none;
+    background-color: ${colors.lightYellow};
   }
 
   .container {
     max-width: 1024px;
     width: 100%;
-    margin: 0 auto;
-    background-color: ${colors.yellow};
+    margin: 80px auto 120px;
   }
 `

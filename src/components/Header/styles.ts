@@ -4,9 +4,7 @@ import { colors } from '../../styles'
 import backgroundBannerImg from '../../assets/images/banner.svg'
 
 export const HeaderStyles = styled.div`
-  background-color: ${colors.yellow};
   background-image: url(${backgroundBannerImg});
-  background-repeat: no-repeat;
   text-align: center;
   justify-content: space-between;
   height: 384px;
@@ -23,5 +21,6 @@ export const HeaderStyles = styled.div`
     margin-bottom: 40px;
     font-weight: 900;
     font-size: 36px;
+    background-color: ${colors.yellow};
   }
 `
