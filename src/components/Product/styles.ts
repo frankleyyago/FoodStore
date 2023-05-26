@@ -7,6 +7,7 @@ export const Card = styled.div`
   color: ${colors.red};
   border: 2px solid ${colors.red};
   grid-template-columns: 1fr 1fr;
+  position: relative;
 `
 export const TitleHead = styled.div`
   display: flex;
@@ -46,4 +47,10 @@ export const ButtonStyles = styled.button`
   border: none;
   padding: 4px 6px;
   margin-top: 16px;
+`
+
+export const Infos = styled.div`
+  position: absolute;
+  top: 22px;
+  right: 12px;
 `

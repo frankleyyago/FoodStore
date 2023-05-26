@@ -3,30 +3,41 @@ import {
   Card,
   Description,
   Detail,
+  Infos,
   ProductTitle,
   TitleHead
 } from './styles'
 
 import favStar from '../../assets/images/star.svg'
+import Tag from '../Tag'
 
-const Product = () => (
+type Props = {
+  id: number
+  dish: string
+  score: string
+  description: string
+  infos: string[]
+  image: string
+}
+
+const Product = ({ id, dish, score, description, infos, image }: Props) => (
   <div>
     <Card>
-      <img src="https://via.placeholder.com/472x217" alt="" />
+      <img src={image} alt={dish} />
+      <Infos>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
+      </Infos>
       <Detail>
         <TitleHead>
-          <ProductTitle>prato 1</ProductTitle>
+          <ProductTitle>{dish}</ProductTitle>
           <div>
-            <ProductTitle>4.9</ProductTitle>
+            <ProductTitle>{score}</ProductTitle>
             <img src={favStar} alt="Favorite star" />
           </div>
         </TitleHead>
-        <Description>
-          A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você!
-          Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis,
-          tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e
-          sabor inesquecível. Peça já!
-        </Description>
+        <Description> {description}</Description>
         <ButtonStyles>Saiba mais</ButtonStyles>
       </Detail>
     </Card>

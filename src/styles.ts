@@ -14,7 +14,6 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: roboto, sans-serif;
     list-styles: none;
-    background-color: ${colors.lightYellow};
   }
 
   .container {
