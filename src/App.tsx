@@ -1,8 +1,8 @@
 import { GlobalCss } from './styles'
 
 import Header from './components/Header/index'
-import Product from './components/Product'
 import ProductsList from './components/ProductsList'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <div className="container">
         <ProductsList />
       </div>
+      <Footer />
     </div>
   )
 }
