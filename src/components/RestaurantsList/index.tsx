@@ -1,14 +1,14 @@
-import Product from '../Product'
-import { List, Container } from './styles'
+import Product from '../Restaurant'
+import { ListStyles } from './styles'
 import Restaurant from '../../models/Restaurant'
 
 export type Props = {
   restaurants: Restaurant[]
 }
 
-const ProductsList = ({ restaurants }: Props) => (
-  <Container>
-    <List>
+const RestaurantsList = ({ restaurants }: Props) => (
+  <div>
+    <ListStyles>
       {restaurants.map((restaurant) => (
         <Product
           key={restaurant.id}
@@ -19,8 +19,8 @@ const ProductsList = ({ restaurants }: Props) => (
           infos={restaurant.infos}
         />
       ))}
-    </List>
-  </Container>
+    </ListStyles>
+  </div>
 )
 
-export default ProductsList
+export default RestaurantsList

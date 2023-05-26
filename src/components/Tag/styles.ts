@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const TagContainer = styled.div`
+export const TagStyles = styled.div`
   background-color: ${colors.red};
   color: ${colors.lightYellow};
   font-size: 12px;

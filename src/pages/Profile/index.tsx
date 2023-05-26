@@ -43,7 +43,7 @@ const restaurant: Restaurant[] = [
   }
 ]
 
-const Home = () => (
+const Profile = () => (
   <>
     <Header />
     <div className="container">
@@ -52,4 +52,4 @@ const Home = () => (
   </>
 )
 
-export default Home
+export default Profile

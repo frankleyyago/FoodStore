@@ -3,7 +3,7 @@ import { colors } from '../../styles'
 
 import backgroundBannerImg from '../../assets/images/banner.svg'
 
-export const HeaderStyles = styled.div`
+export const HomeHeaderStyles = styled.div`
   background-image: url(${backgroundBannerImg});
   text-align: center;
   justify-content: space-between;
