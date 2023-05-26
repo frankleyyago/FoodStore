@@ -41,14 +41,6 @@ export const Description = styled.p`
   display: block;
 `
 
-export const ButtonStyles = styled.button`
-  background-color: ${colors.red};
-  color: ${colors.lightYellow};
-  border: none;
-  padding: 4px 6px;
-  margin-top: 16px;
-`
-
 export const Infos = styled.div`
   position: absolute;
   top: 22px;

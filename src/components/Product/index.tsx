@@ -1,5 +1,4 @@
 import {
-  ButtonStyles,
   Card,
   Description,
   Detail,
@@ -10,20 +9,20 @@ import {
 
 import favStar from '../../assets/images/star.svg'
 import Tag from '../Tag'
+import Button from '../Button'
 
 type Props = {
-  id: number
-  dish: string
+  restaurant: string
   score: string
   description: string
   infos: string[]
   image: string
 }
 
-const Product = ({ id, dish, score, description, infos, image }: Props) => (
+const Product = ({ restaurant, score, description, infos, image }: Props) => (
   <div>
     <Card>
-      <img src={image} alt={dish} />
+      <img src={image} alt={restaurant} />
       <Infos>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
@@ -31,14 +30,16 @@ const Product = ({ id, dish, score, description, infos, image }: Props) => (
       </Infos>
       <Detail>
         <TitleHead>
-          <ProductTitle>{dish}</ProductTitle>
+          <ProductTitle>{restaurant}</ProductTitle>
           <div>
             <ProductTitle>{score}</ProductTitle>
             <img src={favStar} alt="Favorite star" />
           </div>
         </TitleHead>
         <Description> {description}</Description>
-        <ButtonStyles>Saiba mais</ButtonStyles>
+        <Button type="link" to="/perfil" title="Clique aqui para saber mais">
+          Saiba mais
+        </Button>
       </Detail>
     </Card>
   </div>
