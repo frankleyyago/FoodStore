@@ -19,7 +19,7 @@ type Props = {
   image: string
 }
 
-const Restaurant = ({
+const Restaurants = ({
   restaurant,
   score,
   description,
@@ -51,4 +51,4 @@ const Restaurant = ({
   </div>
 )
 
-export default Restaurant
+export default Restaurants

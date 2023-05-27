@@ -1,4 +1,4 @@
-import Product from '../Restaurant'
+import Restaurants from '../Restaurant'
 import { ListStyles } from './styles'
 import Restaurant from '../../models/Restaurant'
 
@@ -10,7 +10,7 @@ const RestaurantsList = ({ restaurants }: Props) => (
   <div>
     <ListStyles>
       {restaurants.map((restaurant) => (
-        <Product
+        <Restaurants
           key={restaurant.id}
           restaurant={restaurant.restaurantName}
           image={restaurant.image}

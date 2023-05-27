@@ -1,46 +1,50 @@
-import Header from '../../components/HomeHeader'
-import RestaurantsList from '../../components/RestaurantsList'
-import Restaurant from '../../models/Restaurant'
-
-import sushi from '../../assets/images/hioki.svg'
+import pizza from '../../assets/images/pizza.svg'
 import ProfileHeader from '../../components/ProfileHeader'
+import MenuList from '../../components/MenuList'
+import Menu from '../../models/Menu'
 
-const restaurant: Restaurant[] = [
+const menu: Menu[] = [
   {
     id: 1,
-    restaurantName: 'Hioki Sushi',
+    dishName: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da semana', 'Japonesa'],
-    score: '4,9'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
   },
   {
     id: 2,
-    restaurantName: 'Hioki Sushi',
+    dishName: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Italiano'],
-    score: '4,9'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
   },
   {
     id: 3,
-    restaurantName: 'Hioki Sushi',
+    dishName: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da semana'],
-    score: '4,9'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
   },
   {
     id: 4,
-    restaurantName: 'Hioki Sushi',
+    dishName: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da mes'],
-    score: '4,9'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
+  },
+  {
+    id: 5,
+    dishName: 'Pizza Marguerita',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
+  },
+  {
+    id: 6,
+    dishName: 'Pizza Marguerita',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    image: pizza
   }
 ]
 
@@ -48,7 +52,7 @@ const Profile = () => (
   <>
     <ProfileHeader />
     <div className="container">
-      <RestaurantsList restaurants={restaurant} />
+      <MenuList menus={menu} />
     </div>
   </>
 )
