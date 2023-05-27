@@ -1,28 +1,20 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import { GlobalCss } from './styles'
 
 import Footer from './components/Footer'
-import Home from './pages/Home'
 
-const routes = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <>
-        <Home />
-      </>
-    )
-  }
-])
+import PageRoutes from './routes'
 
 function App() {
   return (
-    <div className="App">
-      <GlobalCss />
-      <RouterProvider router={routes} />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <GlobalCss />
+        <PageRoutes />
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 

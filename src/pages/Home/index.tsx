@@ -1,4 +1,4 @@
-import Header from '../../components/HomeHeader'
+import HomeHeader from '../../components/HomeHeader'
 import RestaurantsList from '../../components/RestaurantsList'
 import Restaurant from '../../models/Restaurant'
 
@@ -45,7 +45,7 @@ const restaurant: Restaurant[] = [
 
 const Home = () => (
   <>
-    <Header />
+    <HomeHeader />
     <div className="container">
       <RestaurantsList restaurants={restaurant} />
     </div>

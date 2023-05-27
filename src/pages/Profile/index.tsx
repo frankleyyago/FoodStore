@@ -45,7 +45,6 @@ const restaurant: Restaurant[] = [
 
 const Profile = () => (
   <>
-    <Header />
     <div className="container">
       <RestaurantsList restaurants={restaurant} />
     </div>

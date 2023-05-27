@@ -43,7 +43,7 @@ const Restaurant = ({
           </div>
         </TitleHeadStyles>
         <DescriptionStyles> {description}</DescriptionStyles>
-        <Button type="link" to="/perfil" title="Clique aqui para saber mais">
+        <Button type="link" to="/profile" title="Clique aqui para saber mais">
           Saiba mais
         </Button>
       </DetailStyles>
