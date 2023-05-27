@@ -3,6 +3,7 @@ import RestaurantsList from '../../components/RestaurantsList'
 import Restaurant from '../../models/Restaurant'
 
 import sushi from '../../assets/images/hioki.svg'
+import ProfileHeader from '../../components/ProfileHeader'
 
 const restaurant: Restaurant[] = [
   {
@@ -45,6 +46,7 @@ const restaurant: Restaurant[] = [
 
 const Profile = () => (
   <>
+    <ProfileHeader />
     <div className="container">
       <RestaurantsList restaurants={restaurant} />
     </div>
