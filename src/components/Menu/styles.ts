@@ -9,11 +9,15 @@ export const CardStyles = styled.div`
   border: 8px solid ${colors.red};
   grid-template-columns: 1fr 1fr;
   position: relative;
+  border-radius: 8px;
+
+  img {
+    border-radius: 8px;
+  }
 
   ${LinkStyles} {
     background-color: ${colors.yellow};
     color: ${colors.red};
-    display: block;
     display: flex;
     align-items: center;
     justify-content: center;
