@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import * as S from './styles'
 
 import Button from '../Button'
@@ -9,7 +11,14 @@ type Props = {
   image: string
 }
 
+type ModalState = {
+  isVisible: boolean
+}
+
 const Menus = ({ menu, description, image }: Props) => {
+  const [modal, setModal] = useState<ModalState>({
+    isVisible: true
+  })
   return (
     <>
       <S.CardStyles>
@@ -19,7 +28,14 @@ const Menus = ({ menu, description, image }: Props) => {
             <S.RestaurantTitleStyles>{menu}</S.RestaurantTitleStyles>
           </S.TitleHeadStyles>
           <S.DescriptionStyles>{description}</S.DescriptionStyles>
-          <Button type="link" to="/profile" title="Clique aqui para saber mais">
+          <Button
+            type="link"
+            to="/profile"
+            title="Clique aqui para saber mais"
+            onClick={() => {
+              setModal({ isVisible: true })
+            }}
+          >
             Mais detalhes
           </Button>
         </S.DetailStyles>

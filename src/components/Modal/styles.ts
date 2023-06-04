@@ -11,9 +11,13 @@ export const ModalStyles = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 1;
   color: ${colors.white};
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+
+  &.visible {
+    display: flex;
+  }
 
   ${LinkStyles} {
     background-color: ${colors.yellow};
@@ -36,6 +40,7 @@ export const ModalHeaderStyles = styled.header`
 
   img {
     margin: 8px 8px 0 0;
+    cursor: pointer;
   }
 `
 
@@ -49,6 +54,7 @@ export const ModalBodyStyles = styled.div`
     height: 280px;
     width: 280px;
     object-fit: cover;
+    border-radius: 8px;
   }
 
   > div {
