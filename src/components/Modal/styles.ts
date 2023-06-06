@@ -8,7 +8,7 @@ export const ModalStyles = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
   color: ${colors.white};
   display: none;

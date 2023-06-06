@@ -6,9 +6,9 @@ import Button from '../Button'
 
 type Props = {
   restaurant: string
-  score: string
+  score: number
   description: string
-  infos: string[]
+  infos?: string[]
   image: string
 }
 
@@ -23,7 +23,7 @@ const Restaurants = ({
     <S.CardStyles>
       <img src={image} alt={restaurant} />
       <S.InfosStyles>
-        {infos.map((info) => (
+        {infos?.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
       </S.InfosStyles>

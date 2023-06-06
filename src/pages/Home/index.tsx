@@ -1,73 +1,44 @@
+import { useEffect, useState } from 'react'
+
 import HomeHeader from '../../components/HomeHeader'
 import RestaurantsList from '../../components/RestaurantsList'
-import Restaurant from '../../models/Restaurant'
 
-import sushi from '../../assets/images/hioki.svg'
+export type Restaurant = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: [
+    {
+      foto: string
+      preco: number
+      id: number
+      nome: string
+      descricao: string
+      porcao: string
+    }
+  ]
+}
 
-const restaurant: Restaurant[] = [
-  {
-    id: 1,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da semana', 'Japonesa'],
-    score: '4,9'
-  },
-  {
-    id: 2,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Italiano'],
-    score: '4,9'
-  },
-  {
-    id: 3,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da semana'],
-    score: '4,9'
-  },
-  {
-    id: 4,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da mes'],
-    score: '4,9'
-  },
-  {
-    id: 5,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da semana'],
-    score: '4,9'
-  },
-  {
-    id: 6,
-    restaurantName: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    image: sushi,
-    infos: ['Destaque da mes'],
-    score: '4,9'
-  }
-]
+const Home = () => {
+  const [restaurant, setRestaurant] = useState<Restaurant[]>([])
 
-const Home = () => (
-  <>
-    <HomeHeader />
-    <div className="container">
-      <RestaurantsList restaurants={restaurant} />
-    </div>
-  </>
-)
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((ans) => ans.json())
+      .then((ans) => setRestaurant(ans))
+  }, [])
+  return (
+    <>
+      <HomeHeader />
+      <div className="container">
+        <RestaurantsList restaurants={restaurant} />
+      </div>
+    </>
+  )
+}
 
 export default Home

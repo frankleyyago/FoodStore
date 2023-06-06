@@ -8,6 +8,11 @@ export const CardStyles = styled.div`
   border: 2px solid ${colors.red};
   grid-template-columns: 1fr 1fr;
   position: relative;
+
+  > img {
+    height: 217px;
+    width: 472px;
+  }
 `
 export const TitleHeadStyles = styled.div`
   display: flex;

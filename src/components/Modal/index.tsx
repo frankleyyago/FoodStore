@@ -17,7 +17,7 @@ type ModalState = {
 
 const Modal = ({ description, image, menu }: Props) => {
   const [modal, setModal] = useState<ModalState>({
-    isVisible: false
+    isVisible: true
   })
   return (
     <>
