@@ -16,6 +16,7 @@ const RestaurantsList = ({ restaurants }: Props) => (
           image={restaurant.capa}
           description={restaurant.descricao}
           score={restaurant.avaliacao}
+          type={restaurant.tipo}
         />
       ))}
     </ListStyles>
