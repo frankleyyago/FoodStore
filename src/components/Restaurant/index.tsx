@@ -8,7 +8,7 @@ type Props = {
   restaurant: string
   score: number
   description: string
-  type: string
+  infos: string[]
   image: string
 }
 
@@ -16,14 +16,16 @@ const Restaurants = ({
   restaurant,
   score,
   description,
-  image,
-  type
+  infos,
+  image
 }: Props) => (
   <div>
     <S.CardStyles>
       <img src={image} alt={restaurant} />
       <S.InfosStyles>
-        <Tag>{type}</Tag>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
       </S.InfosStyles>
       <S.DetailStyles>
         <S.TitleHeadStyles>
