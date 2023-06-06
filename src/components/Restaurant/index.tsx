@@ -18,30 +18,42 @@ const Restaurants = ({
   description,
   infos,
   image
-}: Props) => (
-  <div>
-    <S.CardStyles>
-      <img src={image} alt={restaurant} />
-      <S.InfosStyles>
-        {infos.map((info) => (
-          <Tag key={info}>{info}</Tag>
-        ))}
-      </S.InfosStyles>
-      <S.DetailStyles>
-        <S.TitleHeadStyles>
-          <S.RestaurantTitleStyles>{restaurant}</S.RestaurantTitleStyles>
-          <div>
-            <S.RestaurantTitleStyles>{score}</S.RestaurantTitleStyles>
-            <img src={favStar} alt="Favorite star" />
-          </div>
-        </S.TitleHeadStyles>
-        <S.DescriptionStyles> {description}</S.DescriptionStyles>
-        <Button type="link" to="/profile" title="Clique aqui para saber mais">
-          Saiba mais
-        </Button>
-      </S.DetailStyles>
-    </S.CardStyles>
-  </div>
-)
+}: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 245) {
+      return description.slice(0, 245) + '...'
+    }
+    return description
+  }
+
+  return (
+    <div>
+      <S.CardStyles>
+        <img src={image} alt={restaurant} />
+        <S.InfosStyles>
+          {infos.map((info) => (
+            <Tag key={info}>{info}</Tag>
+          ))}
+        </S.InfosStyles>
+        <S.DetailStyles>
+          <S.TitleHeadStyles>
+            <S.RestaurantTitleStyles>{restaurant}</S.RestaurantTitleStyles>
+            <div>
+              <S.RestaurantTitleStyles>{score}</S.RestaurantTitleStyles>
+              <img src={favStar} alt="Favorite star" />
+            </div>
+          </S.TitleHeadStyles>
+          <S.DescriptionStyles>
+            {' '}
+            {getDescription(description)}
+          </S.DescriptionStyles>
+          <Button type="link" to="/profile" title="Clique aqui para saber mais">
+            Saiba mais
+          </Button>
+        </S.DetailStyles>
+      </S.CardStyles>
+    </div>
+  )
+}
 
 export default Restaurants

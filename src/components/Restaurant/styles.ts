@@ -10,8 +10,10 @@ export const CardStyles = styled.div`
   position: relative;
 
   > img {
+    display: block;
+    width: 100%;
     height: 217px;
-    width: 472px;
+    object-fit: cover;
   }
 `
 export const TitleHeadStyles = styled.div`
