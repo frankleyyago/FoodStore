@@ -20,7 +20,6 @@ const Profile = () => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.cardapio)
         setMenu(response.cardapio)
       })
   }, [id])

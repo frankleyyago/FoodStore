@@ -2,7 +2,6 @@ import { styled } from 'styled-components'
 import { colors } from '../../styles'
 
 import backgroundBannerImg from '../../assets/images/banner.svg'
-import backgroundRestaurantImg from '../../assets/images/restaurant.svg'
 
 export const ProfileHeaderStyles = styled.div`
   background-image: url(${backgroundBannerImg});
@@ -18,21 +17,24 @@ export const ProfileHeaderStyles = styled.div`
     width: 1024px;
     max-width: 100%;
     align-items: center;
+    height: 98px;
+    margin-top: 20px;
   }
 
   img {
-    margin-top: 40px;
     height: 58px;
   }
 
-  h2 {
-    margin-top: 60px;
+  h2,
+  a {
     font-size: 18px;
+    text-decoration: none;
+    color: ${colors.red};
+    font-weight: bold;
   }
 `
 
 export const BannerRestaurantStyles = styled.div`
-  background-image: url(${backgroundRestaurantImg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
