@@ -1,4 +1,3 @@
-import pizza from '../../assets/images/pizza.svg'
 import ProfileHeader from '../../components/ProfileHeader'
 import MenuList from '../../components/MenuList'
 import { useEffect, useState } from 'react'
@@ -20,7 +19,10 @@ const Profile = () => {
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((response) => response.json())
-      .then((response) => setMenu(response))
+      .then((response) => {
+        console.log(response.cardapio)
+        setMenu(response.cardapio)
+      })
   }, [id])
 
   if (!menu) {

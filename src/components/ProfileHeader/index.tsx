@@ -13,9 +13,7 @@ const ProfileHeader = () => {
           <h2>0 produto(s) no carrinho</h2>
         </div>
       </S.ProfileHeaderStyles>
-      <S.BannerRestaurantStyles
-        style={{ backgroundImage: backgroundRestaurantImg }}
-      >
+      <S.BannerRestaurantStyles>
         <div>
           <S.RestaurantCountryStyles>Italiano</S.RestaurantCountryStyles>
           <S.RestaurantNameStyles>

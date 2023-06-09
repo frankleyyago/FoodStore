@@ -2,6 +2,7 @@ import { styled } from 'styled-components'
 import { colors } from '../../styles'
 
 import backgroundBannerImg from '../../assets/images/banner.svg'
+import backgroundRestaurantImg from '../../assets/images/restaurant.svg'
 
 export const ProfileHeaderStyles = styled.div`
   background-image: url(${backgroundBannerImg});
@@ -31,6 +32,7 @@ export const ProfileHeaderStyles = styled.div`
 `
 
 export const BannerRestaurantStyles = styled.div`
+  background-image: url(${backgroundRestaurantImg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
