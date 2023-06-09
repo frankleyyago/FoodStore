@@ -13,6 +13,10 @@ export const CardStyles = styled.div`
 
   img {
     border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
   }
 
   ${LinkStyles} {

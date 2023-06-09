@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import HomeHeader from '../../components/HomeHeader'
 import RestaurantsList from '../../components/RestaurantsList'
+import { Menu } from '../Profile'
 
 export type Restaurant = {
   id: number
@@ -11,16 +12,7 @@ export type Restaurant = {
   avaliacao: number
   descricao: string
   capa: string
-  cardapio: [
-    {
-      foto: string
-      preco: number
-      id: number
-      nome: string
-      descricao: string
-      porcao: string
-    }
-  ]
+  cardapio?: Menu[]
 }
 
 const Home = () => {
@@ -28,8 +20,8 @@ const Home = () => {
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((ans) => ans.json())
-      .then((ans) => setRestaurant(ans))
+      .then((response) => response.json())
+      .then((response) => setRestaurant(response))
   }, [])
   return (
     <>

@@ -1,60 +1,40 @@
 import pizza from '../../assets/images/pizza.svg'
 import ProfileHeader from '../../components/ProfileHeader'
 import MenuList from '../../components/MenuList'
-import Menu from '../../models/Menu'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const menu: Menu[] = [
-  {
-    id: 1,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 2,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 3,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 4,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 5,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 6,
-    dishName: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
+export type Menu = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
+const Profile = () => {
+  const { id } = useParams()
+  const [menu, setMenu] = useState<Menu[]>([])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((response) => response.json())
+      .then((response) => setMenu(response))
+  }, [id])
+
+  if (!menu) {
+    return <h3>Carregando...</h3>
   }
-]
 
-const Profile = () => (
-  <>
-    <ProfileHeader />
-    <div className="container">
-      <MenuList menus={menu} />
-    </div>
-  </>
-)
+  return (
+    <>
+      <ProfileHeader />
+      <div className="container">
+        <MenuList menus={menu} />
+      </div>
+    </>
+  )
+}
 
 export default Profile
