@@ -10,6 +10,7 @@ type Props = {
   description: string
   infos: string[]
   image: string
+  id: number
 }
 
 const Restaurants = ({
@@ -17,7 +18,8 @@ const Restaurants = ({
   score,
   description,
   infos,
-  image
+  image,
+  id
 }: Props) => {
   const getDescription = (description: string) => {
     if (description.length > 245) {
@@ -47,7 +49,11 @@ const Restaurants = ({
             {' '}
             {getDescription(description)}
           </S.DescriptionStyles>
-          <Button type="link" to="/profile" title="Clique aqui para saber mais">
+          <Button
+            type="link"
+            to={`/profile/${id}`}
+            title="Clique aqui para saber mais"
+          >
             Saiba mais
           </Button>
         </S.DetailStyles>

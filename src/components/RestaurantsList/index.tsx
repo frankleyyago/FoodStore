@@ -32,6 +32,7 @@ const RestaurantsList = ({ restaurants }: Props) => {
             description={restaurant.descricao}
             score={restaurant.avaliacao}
             infos={getRestaurantTag(restaurant)}
+            id={restaurant.id}
           />
         ))}
       </ListStyles>
