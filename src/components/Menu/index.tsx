@@ -2,7 +2,7 @@ import * as S from './styles'
 
 import Button from '../Button'
 
-type Props = {
+export type Props = {
   menu: string
   description: string
   image: string

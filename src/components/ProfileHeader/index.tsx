@@ -1,7 +1,6 @@
 import * as S from './styles'
 
 import logo from '../../assets/images/logo.svg'
-import backgroundRestaurantImg from '../../assets/images/restaurant.svg'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 

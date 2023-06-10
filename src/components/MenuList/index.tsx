@@ -1,6 +1,9 @@
 import Menus from '../Menu'
-import { ListStyles } from './styles'
+import Modal from '../Modal'
+
 import { Menu } from '../../pages/Profile'
+
+import { ListStyles } from './styles'
 
 export type Props = {
   menus: Menu[]
@@ -17,6 +20,16 @@ const MenuList = ({ menus }: Props) => {
             image={menu.foto}
             description={menu.descricao}
             id={menu.id}
+          />
+        ))}
+      </ListStyles>
+      <ListStyles>
+        {menus.map((modal) => (
+          <Modal
+            key={modal.id}
+            menu={modal.nome}
+            description={modal.descricao}
+            image={modal.foto}
           />
         ))}
       </ListStyles>

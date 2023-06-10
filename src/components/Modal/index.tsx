@@ -5,17 +5,21 @@ import * as S from './styles'
 import close from '../../assets/images/close.svg'
 import Button from '../Button'
 
+import pizza from '../../assets/images/pizza.svg'
+
 type Props = {
-  menu: string
-  description: string
-  image: string
+  menu?: string
+  description?: string
+  image?: string
+  porcao?: string
+  id?: number
 }
 
 type ModalState = {
   isVisible: boolean
 }
 
-const Modal = ({ description, image, menu }: Props) => {
+const Modal = ({ description, image, menu, id, porcao }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isVisible: true
   })
@@ -36,19 +40,8 @@ const Modal = ({ description, image, menu }: Props) => {
             <img src={image} alt="" />
             <div>
               <h3>{menu}</h3>
-              <p>
-                A pizza Margherita é uma pizza clássica da culinária italiana,
-                reconhecida por sua simplicidade e sabor inigualável. Ela é
-                feita com uma base de massa fina e crocante, coberta com molho
-                de tomate fresco, queijo mussarela de alta qualidade, manjericão
-                fresco e azeite de oliva extra-virgem. A combinação de sabores é
-                perfeita, com o molho de tomate suculento e ligeiramente ácido,
-                o queijo derretido e cremoso e as folhas de manjericão frescas,
-                que adicionam um toque de sabor herbáceo. É uma pizza simples,
-                mas deliciosa, que agrada a todos os paladares e é uma ótima
-                opção para qualquer ocasião.
-              </p>
-              <h4>Serve: de 2 a 3 pessoas</h4>
+              <p>{description}</p>
+              <h4>Serve: de {porcao}</h4>
               <div>
                 <Button
                   type="link"
