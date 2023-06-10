@@ -11,9 +11,11 @@ type Props = {
   description?: string
   image?: string
   id?: number
+  portion?: string
+  price?: number
 }
 
-const Modal = ({ description, image, menu, id }: Props) => {
+const Modal = ({ description, image, menu, id, price, portion }: Props) => {
   const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
   const dispatch = useDispatch()
@@ -25,31 +27,33 @@ const Modal = ({ description, image, menu, id }: Props) => {
   return (
     <>
       <S.ModalStyles className={isOpen ? 'is-open' : ''}>
-        <S.ModalContentStyles className="container">
-          <S.ModalHeaderStyles>
-            <img
-              onClick={closeModal}
-              src={closed}
-              alt="Clique aqui para fechar"
-            />
-          </S.ModalHeaderStyles>
-          <S.ModalBodyStyles>
-            <img src={image} alt="" />
-            <div>
-              <h3>{menu}</h3>
-              <p>{description}</p>
-              <h4>Serve: de 1 a 2 pessoas</h4>
+        <S.Overlay onClick={closeModal}>
+          <S.ModalContentStyles className="container">
+            <S.ModalHeaderStyles>
+              <img
+                onClick={closeModal}
+                src={closed}
+                alt="Clique aqui para fechar"
+              />
+            </S.ModalHeaderStyles>
+            <S.ModalBodyStyles>
+              <img src={image} alt="" />
               <div>
-                <Button
-                  type="link"
-                  title="Clique aqui para adicionar ao carrinho"
-                >
-                  Adicionar ao carrinho - R$ 60,90
-                </Button>
+                <h3>{menu}</h3>
+                <p>{description}</p>
+                <h4>Serve: de {portion}</h4>
+                <div>
+                  <Button
+                    type="link"
+                    title="Clique aqui para adicionar ao carrinho"
+                  >
+                    Adicionar ao carrinho - R$ 60,90
+                  </Button>
+                </div>
               </div>
-            </div>
-          </S.ModalBodyStyles>
-        </S.ModalContentStyles>
+            </S.ModalBodyStyles>
+          </S.ModalContentStyles>
+        </S.Overlay>
       </S.ModalStyles>
     </>
   )
