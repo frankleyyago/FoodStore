@@ -5,4 +5,5 @@ export const ListStyles = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 32px;
   row-gap: 48px;
+  list-style: none;
 `

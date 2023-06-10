@@ -15,7 +15,7 @@ export const ModalStyles = styled.div`
   align-items: center;
   justify-content: center;
 
-  &.visible {
+  &.is-open {
     display: flex;
   }
 

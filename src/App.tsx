@@ -5,16 +5,20 @@ import { GlobalCss } from './styles'
 import Footer from './components/Footer'
 
 import PageRoutes from './routes'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <GlobalCss />
-        <PageRoutes />
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <GlobalCss />
+          <PageRoutes />
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </Provider>
   )
 }
 

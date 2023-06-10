@@ -1,39 +1,36 @@
-import { useState } from 'react'
-
 import * as S from './styles'
 
-import close from '../../assets/images/close.svg'
+import closed from '../../assets/images/close.svg'
 import Button from '../Button'
-
-import pizza from '../../assets/images/pizza.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { close } from '../../store/reducers/modal'
+import { RootReducer } from '../../store'
 
 type Props = {
   menu?: string
   description?: string
   image?: string
-  porcao?: string
   id?: number
 }
 
-type ModalState = {
-  isVisible: boolean
-}
+const Modal = ({ description, image, menu, id }: Props) => {
+  const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
-const Modal = ({ description, image, menu, id, porcao }: Props) => {
-  const [modal, setModal] = useState<ModalState>({
-    isVisible: true
-  })
+  const dispatch = useDispatch()
+
+  const closeModal = () => {
+    dispatch(close())
+  }
+
   return (
     <>
-      <S.ModalStyles className={modal.isVisible ? 'visible' : ''}>
+      <S.ModalStyles className={isOpen ? 'is-open' : ''}>
         <S.ModalContentStyles className="container">
           <S.ModalHeaderStyles>
             <img
-              src={close}
+              onClick={closeModal}
+              src={closed}
               alt="Clique aqui para fechar"
-              onClick={() => {
-                setModal({ isVisible: false })
-              }}
             />
           </S.ModalHeaderStyles>
           <S.ModalBodyStyles>
@@ -41,7 +38,7 @@ const Modal = ({ description, image, menu, id, porcao }: Props) => {
             <div>
               <h3>{menu}</h3>
               <p>{description}</p>
-              <h4>Serve: de {porcao}</h4>
+              <h4>Serve: de 1 a 2 pessoas</h4>
               <div>
                 <Button
                   type="link"

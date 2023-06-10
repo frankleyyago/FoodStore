@@ -8,6 +8,7 @@ export const ButtonStyles = styled.button`
   color: ${colors.lightYellow};
   border: none;
   padding: 4px 6px;
+  cursor: pointer;
 `
 
 export const LinkStyles = styled(Link)`
@@ -17,6 +18,7 @@ export const LinkStyles = styled(Link)`
   border: none;
   padding: 4px 6px;
   text-decoration: none;
+  cursor: pointer;
 `
 
 export const ButtonWrapperStyles = styled.div`

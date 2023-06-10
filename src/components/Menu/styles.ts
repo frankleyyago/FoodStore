@@ -1,6 +1,6 @@
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 import { colors } from '../../styles'
-import { LinkStyles } from '../Button/styles'
+import { ButtonStyles } from '../Button/styles'
 
 export const CardStyles = styled.div`
   display: block;
@@ -19,12 +19,13 @@ export const CardStyles = styled.div`
     object-fit: cover;
   }
 
-  ${LinkStyles} {
+  ${ButtonStyles} {
     background-color: ${colors.yellow};
     color: ${colors.red};
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 `
 
