@@ -18,6 +18,8 @@ const MenuList = ({ menus }: Props) => {
               menu={menu.nome}
               image={menu.foto}
               description={menu.descricao}
+              portion={menu.porcao}
+              price={menu.preco}
               id={menu.id}
             />
           </li>

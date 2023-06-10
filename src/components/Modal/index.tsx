@@ -47,7 +47,7 @@ const Modal = ({ description, image, menu, id, price, portion }: Props) => {
                     type="link"
                     title="Clique aqui para adicionar ao carrinho"
                   >
-                    Adicionar ao carrinho - R$ 60,90
+                    <span>Adicionar ao carrinho - {price}</span>
                   </Button>
                 </div>
               </div>

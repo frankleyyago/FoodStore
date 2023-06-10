@@ -11,13 +11,22 @@ export type Props = {
   description: string
   image: string
   id: number
+  portion: string
+  price: number
 }
 
-const Menus = ({ menu, description, image, id }: Props) => {
+const Menus = ({ menu, description, image, id, portion, price }: Props) => {
   const dispatch = useDispatch()
 
   const openModal = () => {
     dispatch(open())
+  }
+
+  const getDescription = (description: string) => {
+    if (description.length > 132) {
+      return description.slice(0, 120) + '...'
+    }
+    return description
   }
 
   return (
@@ -28,17 +37,27 @@ const Menus = ({ menu, description, image, id }: Props) => {
           <S.TitleHeadStyles>
             <S.RestaurantTitleStyles>{menu}</S.RestaurantTitleStyles>
           </S.TitleHeadStyles>
-          <S.DescriptionStyles>{description}</S.DescriptionStyles>
+          <S.DescriptionStyles>
+            {' '}
+            {getDescription(description)}
+          </S.DescriptionStyles>
           <Button
             onClick={openModal}
             type="button"
             title="Clique aqui para saber mais"
           >
-            Mais detalhes
+            <span>Mais detalhes</span>
           </Button>
         </S.DetailStyles>
       </S.CardStyles>
-      <Modal description={description} image={image} menu={menu} id={id} />
+      <Modal
+        description={description}
+        image={image}
+        menu={menu}
+        id={id}
+        portion={portion}
+        price={price}
+      />
     </>
   )
 }

@@ -54,7 +54,7 @@ const Restaurants = ({
             to={`/profile/${id}`}
             title="Clique aqui para saber mais"
           >
-            Saiba mais
+            <span>Saiba mais</span>
           </Button>
         </S.DetailStyles>
       </S.CardStyles>
