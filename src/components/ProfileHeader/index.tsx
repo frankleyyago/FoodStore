@@ -4,6 +4,9 @@ import logo from '../../assets/images/logo.svg'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
+import { open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
+
 export type Banner = {
   titulo: string
   capa: string
@@ -11,6 +14,12 @@ export type Banner = {
 }
 
 const ProfileHeader = () => {
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
   const { id } = useParams()
   const [banner, setBanner] = useState<Banner>({} as Banner)
 
@@ -34,7 +43,7 @@ const ProfileHeader = () => {
           <Link to={'/'}>
             <img src={logo} alt="eFood" />
           </Link>
-          <h2>0 produto(s) no carrinho</h2>
+          <a onClick={openCart}>0 produto(s) no carrinho</a>
         </div>
       </S.ProfileHeaderStyles>
       <S.BannerRestaurantStyles

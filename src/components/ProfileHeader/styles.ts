@@ -25,12 +25,12 @@ export const ProfileHeaderStyles = styled.div`
     height: 58px;
   }
 
-  h2,
   a {
     font-size: 18px;
     text-decoration: none;
     color: ${colors.red};
     font-weight: bold;
+    cursor: pointer;
   }
 `
 
