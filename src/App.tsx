@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import PageRoutes from './routes'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <GlobalCss />
           <PageRoutes />
           <Footer />
+          <Cart />
         </div>
       </BrowserRouter>
     </Provider>
