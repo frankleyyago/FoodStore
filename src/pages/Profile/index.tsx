@@ -1,7 +1,7 @@
 import ProfileHeader from '../../components/ProfileHeader'
 import MenuList from '../../components/MenuList'
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useGetMenuListQuery } from '../../services/api'
 
 export type Menu = {
   foto: string
@@ -14,15 +14,8 @@ export type Menu = {
 
 const Profile = () => {
   const { id } = useParams()
-  const [menu, setMenu] = useState<Menu[]>([])
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((response) => response.json())
-      .then((response) => {
-        setMenu(response.cardapio)
-      })
-  }, [id])
+  const { data: menu } = useGetMenuListQuery(id!)
+  console.log('Dados do menu:', menu)
 
   if (!menu) {
     return <h3>Carregando...</h3>
