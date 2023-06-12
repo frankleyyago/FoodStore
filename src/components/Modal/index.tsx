@@ -7,15 +7,21 @@ import { close } from '../../store/reducers/modal'
 import { RootReducer } from '../../store'
 
 type Props = {
-  menu?: string
-  description?: string
-  image?: string
-  id?: number
-  portion?: string
-  price?: number
+  menu: string
+  description: string
+  image: string
+  id: number
+  portion: string
+  price: number
 }
 
-const Modal = ({ description, image, menu, id, price, portion }: Props) => {
+const Modal = ({ description, image, menu, price, portion }: Props) => {
+  const PriceFormat = (price: number) => {
+    return new Intl.NumberFormat('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(price)
+  }
   const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
   const dispatch = useDispatch()
@@ -47,7 +53,7 @@ const Modal = ({ description, image, menu, id, price, portion }: Props) => {
                     type="link"
                     title="Clique aqui para adicionar ao carrinho"
                   >
-                    <span>Adicionar ao carrinho - {price}</span>
+                    <span>Adicionar ao carrinho - {PriceFormat(price)}</span>
                   </Button>
                 </div>
               </div>

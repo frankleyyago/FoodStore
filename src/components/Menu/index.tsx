@@ -21,9 +21,10 @@ const Menus = ({ menu, description, image, id, portion, price }: Props) => {
   const openModal = () => {
     dispatch(open())
   }
+  console.log(openModal)
 
   const getDescription = (description: string) => {
-    if (description.length > 132) {
+    if (description.length > 117) {
       return description.slice(0, 120) + '...'
     }
     return description
@@ -50,14 +51,6 @@ const Menus = ({ menu, description, image, id, portion, price }: Props) => {
           </Button>
         </S.DetailStyles>
       </S.CardStyles>
-      <Modal
-        description={description}
-        image={image}
-        menu={menu}
-        id={id}
-        portion={portion}
-        price={price}
-      />
     </>
   )
 }
