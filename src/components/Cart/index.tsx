@@ -4,7 +4,7 @@ import * as S from './styles'
 import pizza from '../../assets/images/pizza.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { close } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
 import { PriceFormat } from '../Modal'
 
 const Cart = () => {
@@ -22,6 +22,10 @@ const Cart = () => {
     }, 0)
   }
 
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
       <S.Overlay onClick={closeCart} />
@@ -34,7 +38,7 @@ const Cart = () => {
                 <h3>{item.menu}</h3>
                 <span>{PriceFormat(item.price)}</span>
               </div>
-              <button type="button" />
+              <button type="button" onClick={() => removeItem(item.id)} />
             </S.CartItem>
           ))}
         </ul>
