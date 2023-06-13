@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { LinkStyles } from '../Button/styles'
+import { ButtonStyles } from '../Button/styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -12,6 +12,7 @@ export const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `
 
 export const ModalStyles = styled.div`
@@ -28,7 +29,7 @@ export const ModalStyles = styled.div`
     display: flex;
   }
 
-  ${LinkStyles} {
+  ${ButtonStyles} {
     background-color: ${colors.yellow};
     color: ${colors.red};
   }

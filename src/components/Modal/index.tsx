@@ -5,15 +5,9 @@ import Button from '../Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { close } from '../../store/reducers/modal'
 import { RootReducer } from '../../store'
+import { Props } from '../Menu'
 
-type Props = {
-  menu: string
-  description: string
-  image: string
-  id: number
-  portion: string
-  price: number
-}
+import { add } from '../../store/reducers/cart'
 
 const Modal = ({ description, image, menu, price, portion }: Props) => {
   const PriceFormat = (price: number) => {
@@ -25,6 +19,10 @@ const Modal = ({ description, image, menu, price, portion }: Props) => {
   const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
   const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add({ menu, description, image, portion, price }))
+  }
 
   const closeModal = () => {
     dispatch(close())
@@ -50,8 +48,9 @@ const Modal = ({ description, image, menu, price, portion }: Props) => {
                 <h4>Serve: de {portion}</h4>
                 <div>
                   <Button
-                    type="link"
+                    type="button"
                     title="Clique aqui para adicionar ao carrinho"
+                    onClick={addToCart}
                   >
                     <span>Adicionar ao carrinho - {PriceFormat(price)}</span>
                   </Button>

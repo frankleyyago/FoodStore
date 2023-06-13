@@ -1,7 +1,6 @@
 import * as S from './styles'
 
 import Button from '../Button'
-import Modal from '../Modal'
 
 import { open } from '../../store/reducers/modal'
 import { useDispatch } from 'react-redux'
@@ -10,12 +9,12 @@ export type Props = {
   menu: string
   description: string
   image: string
-  id: number
+  id?: number
   portion: string
   price: number
 }
 
-const Menus = ({ menu, description, image, id, portion, price }: Props) => {
+const Menus = ({ menu, description, image }: Props) => {
   const dispatch = useDispatch()
 
   const openModal = () => {

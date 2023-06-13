@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Restaurant } from '../../pages/Home'
+
+import { Props as Modal } from '../../components/Menu'
 
 type CartState = {
-  items: Restaurant[]
+  items: Modal[]
   isOpen: boolean
 }
 
@@ -15,7 +16,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Restaurant>) => {
+    add: (state, action: PayloadAction<Modal>) => {
       state.items.push(action.payload)
     },
     open: (state) => {
