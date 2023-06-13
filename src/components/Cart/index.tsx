@@ -5,9 +5,10 @@ import pizza from '../../assets/images/pizza.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { close } from '../../store/reducers/cart'
+import { PriceFormat } from '../Modal'
 
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -15,31 +16,31 @@ const Cart = () => {
     dispatch(close())
   }
 
+  const getTotalPrice = () => {
+    return items.reduce((amount, currentPrice) => {
+      return (amount += currentPrice.price)
+    }, 0)
+  }
+
   return (
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
       <S.Overlay onClick={closeCart} />
       <S.Sidebar>
         <ul>
-          <S.CartItem>
-            <img src={pizza} alt="" />
-            <div>
-              <h3>Nome do prato</h3>
-              <span>R$ 60,90</span>
-            </div>
-            <button type="button" />
-          </S.CartItem>
-          <S.CartItem>
-            <img src={pizza} alt="" />
-            <div>
-              <h3>Nome do prato</h3>
-              <span>R$ 60,90</span>
-            </div>
-            <button type="button" />
-          </S.CartItem>
+          {items.map((item) => (
+            <S.CartItem key={item.id}>
+              <img src={item.image} alt="" />
+              <div>
+                <h3>{item.menu}</h3>
+                <span>{PriceFormat(item.price)}</span>
+              </div>
+              <button type="button" />
+            </S.CartItem>
+          ))}
         </ul>
         <S.Prices>
           <p>Valor total</p>
-          <p>R$ 182,70</p>
+          <p>{PriceFormat(getTotalPrice())}</p>
         </S.Prices>
         <Button title="Clique aqui para continuar com a entrega" type="button">
           <span>Continuar com a entrega</span>

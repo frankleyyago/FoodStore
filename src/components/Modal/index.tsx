@@ -7,21 +7,22 @@ import { close } from '../../store/reducers/modal'
 import { RootReducer } from '../../store'
 import { Props } from '../Menu'
 
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 
-const Modal = ({ description, image, menu, price, portion }: Props) => {
-  const PriceFormat = (price: number) => {
-    return new Intl.NumberFormat('pt-br', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price)
-  }
+export const PriceFormat = (price: number) => {
+  return new Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
+const Modal = ({ description, image, menu, price, portion, id }: Props) => {
   const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
   const dispatch = useDispatch()
 
   const addToCart = () => {
-    dispatch(add({ menu, description, image, portion, price }))
+    dispatch(add({ id, menu, description, image, portion, price }))
+    dispatch(open())
   }
 
   const closeModal = () => {

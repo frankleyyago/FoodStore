@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { open } from '../../store/reducers/cart'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 export type Banner = {
   titulo: string
@@ -15,6 +16,7 @@ export type Banner = {
 
 const ProfileHeader = () => {
   const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
     dispatch(open())
@@ -43,7 +45,7 @@ const ProfileHeader = () => {
           <Link to={'/'}>
             <img src={logo} alt="eFood" />
           </Link>
-          <a onClick={openCart}>0 produto(s) no carrinho</a>
+          <a onClick={openCart}>{items.length} produto(s) no carrinho</a>
         </div>
       </S.ProfileHeaderStyles>
       <S.BannerRestaurantStyles

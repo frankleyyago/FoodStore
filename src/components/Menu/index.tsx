@@ -9,7 +9,7 @@ export type Props = {
   menu: string
   description: string
   image: string
-  id?: number
+  id: number
   portion: string
   price: number
 }
