@@ -15,7 +15,6 @@ export type Menu = {
 const Profile = () => {
   const { id } = useParams()
   const { data: menu } = useGetMenuListQuery(id!)
-  console.log('Dados do menu:', menu)
 
   if (!menu) {
     return <h3>Carregando...</h3>

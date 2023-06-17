@@ -141,6 +141,8 @@ export const InputGroup = styled.div`
     height: 32px;
     padding: 0 8px;
     width: 100%;
+    font-weight: bold;
+    font-size: 14px;
   }
 
   &.max-width {
