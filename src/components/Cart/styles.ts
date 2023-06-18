@@ -72,7 +72,7 @@ export const Prices = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 100%;
-  margin: 40px 0 16px;
+  margin: 0px 0 16px;
 `
 
 export const CartItem = styled.li`
@@ -143,6 +143,11 @@ export const InputGroup = styled.div`
     width: 100%;
     font-weight: bold;
     font-size: 14px;
+
+    &.error {
+      border: 2px solid red;
+      color: red;
+    }
   }
 
   &.max-width {
