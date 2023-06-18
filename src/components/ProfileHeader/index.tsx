@@ -1,12 +1,13 @@
-import * as S from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+
+import { Link, useParams } from 'react-router-dom'
+import { open } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
 
 import logo from '../../assets/images/logo.svg'
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
 
-import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
+import * as S from './styles'
 
 export type Banner = {
   titulo: string
@@ -39,7 +40,7 @@ const ProfileHeader = () => {
 
   return (
     <>
-      <S.ProfileHeaderStyles>
+      <S.ProfileHeader>
         <div>
           <a href="/">Restaurantes</a>
           <Link to={'/'}>
@@ -47,15 +48,13 @@ const ProfileHeader = () => {
           </Link>
           <a onClick={openCart}>{items.length} produto(s) no carrinho</a>
         </div>
-      </S.ProfileHeaderStyles>
-      <S.BannerRestaurantStyles
-        style={{ backgroundImage: `url(${banner.capa})` }}
-      >
+      </S.ProfileHeader>
+      <S.BannerRestaurant style={{ backgroundImage: `url(${banner.capa})` }}>
         <div>
-          <S.RestaurantCountryStyles>{banner.tipo}</S.RestaurantCountryStyles>
-          <S.RestaurantNameStyles>{banner.titulo}</S.RestaurantNameStyles>
+          <S.RestaurantCountry>{banner.tipo}</S.RestaurantCountry>
+          <S.RestaurantName>{banner.titulo}</S.RestaurantName>
         </div>
-      </S.BannerRestaurantStyles>
+      </S.BannerRestaurant>
     </>
   )
 }

@@ -1,14 +1,14 @@
-import { HomeHeaderStyles } from './styles'
+import * as S from './styles'
 
 import logo from '../../assets/images/logo.svg'
 
 const HomeHeader = () => (
-  <HomeHeaderStyles>
+  <S.HomeHeader>
     <img src={logo} alt="efood" />
     <h2>
       Viva experiências gastronômicas <br /> no conforto da sua casa
     </h2>
-  </HomeHeaderStyles>
+  </S.HomeHeader>
 )
 
 export default HomeHeader

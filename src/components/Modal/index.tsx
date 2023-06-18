@@ -1,20 +1,16 @@
-import * as S from './styles'
-
-import closed from '../../assets/images/close.svg'
-import Button from '../Button'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { close } from '../../store/reducers/modal'
 import { RootReducer } from '../../store'
 import { Props } from '../Menu'
-
 import { add, open } from '../../store/reducers/cart'
+import { parseToBrl } from '../../utils'
 
-export const PriceFormat = (price: number) => {
-  return new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(price)
-}
+import closed from '../../assets/images/close.svg'
+import Button from '../Button'
+
+import * as S from './styles'
+
 const Modal = ({ description, image, menu, price, portion, id }: Props) => {
   const { isOpen } = useSelector((state: RootReducer) => state.modal)
 
@@ -31,17 +27,17 @@ const Modal = ({ description, image, menu, price, portion, id }: Props) => {
 
   return (
     <>
-      <S.ModalStyles className={isOpen ? 'is-open' : ''}>
+      <S.ModalContainer className={isOpen ? 'is-open' : ''}>
         <S.Overlay onClick={closeModal}>
-          <S.ModalContentStyles className="container">
-            <S.ModalHeaderStyles>
+          <S.ModalContent className="container">
+            <S.ModalHeader>
               <img
                 onClick={closeModal}
                 src={closed}
                 alt="Clique aqui para fechar"
               />
-            </S.ModalHeaderStyles>
-            <S.ModalBodyStyles>
+            </S.ModalHeader>
+            <S.ModalBody>
               <img src={image} alt="" />
               <div>
                 <h3>{menu}</h3>
@@ -53,14 +49,14 @@ const Modal = ({ description, image, menu, price, portion, id }: Props) => {
                     title="Clique aqui para adicionar ao carrinho"
                     onClick={addToCart}
                   >
-                    <span>Adicionar ao carrinho - {PriceFormat(price)}</span>
+                    <span>Adicionar ao carrinho - {parseToBrl(price)}</span>
                   </Button>
                 </div>
               </div>
-            </S.ModalBodyStyles>
-          </S.ModalContentStyles>
+            </S.ModalBody>
+          </S.ModalContent>
         </S.Overlay>
-      </S.ModalStyles>
+      </S.ModalContainer>
     </>
   )
 }

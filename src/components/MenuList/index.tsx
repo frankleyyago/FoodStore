@@ -1,10 +1,10 @@
-import Menus from '../Menu'
+import { useState } from 'react'
 
 import { Menu } from '../../pages/Profile'
-
-import { ListStyles } from './styles'
+import Menus from '../Menu'
 import Modal from '../Modal'
-import { useState } from 'react'
+
+import * as S from './styles'
 
 export type Props = {
   menus: Menu[]
@@ -19,7 +19,7 @@ const MenuList = ({ menus }: Props) => {
 
   return (
     <div>
-      <ListStyles>
+      <S.List>
         {menus.map((menu) => (
           <li key={menu.id} onClick={() => handleMenuClick(menu)}>
             <Menus
@@ -32,7 +32,7 @@ const MenuList = ({ menus }: Props) => {
             />
           </li>
         ))}
-      </ListStyles>
+      </S.List>
       {selectedMenu && (
         <Modal
           image={selectedMenu.foto}

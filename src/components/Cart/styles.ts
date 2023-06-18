@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { ButtonStyles } from '../Button/styles'
+import { Button } from '../Button/styles'
 
 import remove from '../../assets/images/remove.svg'
 
@@ -29,7 +29,7 @@ export const CartContainer = styled.div`
     display: flex;
   }
 
-  ${ButtonStyles} {
+  ${Button} {
     background-color: ${colors.yellow};
     color: ${colors.red};
     font-weight: bold;

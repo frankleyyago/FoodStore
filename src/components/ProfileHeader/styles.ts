@@ -3,7 +3,7 @@ import { colors } from '../../styles'
 
 import backgroundBannerImg from '../../assets/images/banner.svg'
 
-export const ProfileHeaderStyles = styled.div`
+export const ProfileHeader = styled.div`
   background-image: url(${backgroundBannerImg});
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ export const ProfileHeaderStyles = styled.div`
   }
 `
 
-export const BannerRestaurantStyles = styled.div`
+export const BannerRestaurant = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -63,13 +63,13 @@ export const BannerRestaurantStyles = styled.div`
   }
 `
 
-export const RestaurantCountryStyles = styled.h2`
+export const RestaurantCountry = styled.h2`
   font-size: 32px;
   margin-top: 24px;
   font-weight: 100;
 `
 
-export const RestaurantNameStyles = styled.h1`
+export const RestaurantName = styled.h1`
   font-size: 32px;
   margin-top: 156px;
   font-weight: 900;

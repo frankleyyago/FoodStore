@@ -1,18 +1,20 @@
-import Button from '../Button'
-import * as S from './styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
-import { PriceFormat } from '../Modal'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
+import Button from '../Button'
+import { close, remove } from '../../store/reducers/cart'
+import { parseToBrl } from '../../utils'
+
 import { usePurchaseMutation } from '../../services/api'
+import { RootReducer } from '../../store'
+
+import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   const [cart, setCart] = useState(true)
   const [delivery, setDelivery] = useState(false)
@@ -154,7 +156,7 @@ const Cart = () => {
               <img src={item.image} alt="remover item do carrinho" />
               <div>
                 <h3>{item.menu}</h3>
-                <span>{PriceFormat(item.price)}</span>
+                <span>{parseToBrl(item.price)}</span>
               </div>
               <button type="button" onClick={() => removeItem(item.id)} />
             </S.CartItem>
@@ -162,7 +164,7 @@ const Cart = () => {
         </ul>
         <S.Prices>
           <p>Valor total</p>
-          <p>{PriceFormat(getTotalPrice())}</p>
+          <p>{parseToBrl(getTotalPrice())}</p>
         </S.Prices>
         <Button
           onClick={goToCartAndDelivery}

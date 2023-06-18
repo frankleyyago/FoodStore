@@ -1,13 +1,13 @@
+import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 
-import { GlobalCss } from './styles'
+import PageRoutes from './routes'
+import { store } from './store'
 
 import Footer from './components/Footer'
-
-import PageRoutes from './routes'
-import { Provider } from 'react-redux'
-import { store } from './store'
 import Cart from './components/Cart'
+
+import { GlobalCss } from './styles'
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { ButtonStyles } from '../Button/styles'
+import { Button } from '../Button/styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -15,7 +15,7 @@ export const Overlay = styled.div`
   z-index: 1;
 `
 
-export const ModalStyles = styled.div`
+export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,13 +29,13 @@ export const ModalStyles = styled.div`
     display: flex;
   }
 
-  ${ButtonStyles} {
+  ${Button} {
     background-color: ${colors.yellow};
     color: ${colors.red};
   }
 `
 
-export const ModalContentStyles = styled.div`
+export const ModalContent = styled.div`
   width: 1024px;
   height: 344px;
   background-color: ${colors.red};
@@ -44,7 +44,7 @@ export const ModalContentStyles = styled.div`
   border-radius: 8px;
 `
 
-export const ModalHeaderStyles = styled.header`
+export const ModalHeader = styled.header`
   display: flex;
   justify-content: flex-end;
 
@@ -54,7 +54,7 @@ export const ModalHeaderStyles = styled.header`
   }
 `
 
-export const ModalBodyStyles = styled.div`
+export const ModalBody = styled.div`
   display: flex;
   padding: 8px 32px;
   font-size: 14px;

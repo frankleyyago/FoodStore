@@ -1,4 +1,4 @@
-import { ButtonStyles, LinkStyles, ButtonWrapperStyles } from './styles'
+import * as S from './styles'
 
 export type Props = {
   type: 'button' | 'link'
@@ -11,20 +11,20 @@ export type Props = {
 const Button = ({ children, title, type, onClick, to }: Props) => {
   if (type === 'button') {
     return (
-      <ButtonWrapperStyles>
-        <ButtonStyles type="button" title={title} onClick={onClick}>
+      <S.ButtonWrapper>
+        <S.Button type="button" title={title} onClick={onClick}>
           {children}
-        </ButtonStyles>
-      </ButtonWrapperStyles>
+        </S.Button>
+      </S.ButtonWrapper>
     )
   }
 
   return (
-    <ButtonWrapperStyles>
-      <LinkStyles to={to as string} title={title}>
+    <S.ButtonWrapper>
+      <S.ButtonLink to={to as string} title={title}>
         {children}
-      </LinkStyles>
-    </ButtonWrapperStyles>
+      </S.ButtonLink>
+    </S.ButtonWrapper>
   )
 }
 

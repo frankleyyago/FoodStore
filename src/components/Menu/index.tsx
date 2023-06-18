@@ -1,9 +1,9 @@
-import * as S from './styles'
+import { open } from '../../store/reducers/modal'
+import { useDispatch } from 'react-redux'
 
 import Button from '../Button'
 
-import { open } from '../../store/reducers/modal'
-import { useDispatch } from 'react-redux'
+import * as S from './styles'
 
 export type Props = {
   menu: string
@@ -31,16 +31,13 @@ const Menus = ({ menu, description, image }: Props) => {
 
   return (
     <>
-      <S.CardStyles>
+      <S.Card>
         <img src={image} alt={menu} />
-        <S.DetailStyles>
-          <S.TitleHeadStyles>
-            <S.RestaurantTitleStyles>{menu}</S.RestaurantTitleStyles>
-          </S.TitleHeadStyles>
-          <S.DescriptionStyles>
-            {' '}
-            {getDescription(description)}
-          </S.DescriptionStyles>
+        <S.Detail>
+          <S.TitleHead>
+            <S.RestaurantTitle>{menu}</S.RestaurantTitle>
+          </S.TitleHead>
+          <S.Description> {getDescription(description)}</S.Description>
           <Button
             onClick={openModal}
             type="button"
@@ -48,8 +45,8 @@ const Menus = ({ menu, description, image }: Props) => {
           >
             <span>Mais detalhes</span>
           </Button>
-        </S.DetailStyles>
-      </S.CardStyles>
+        </S.Detail>
+      </S.Card>
     </>
   )
 }

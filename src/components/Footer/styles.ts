@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const FooterStyles = styled.div`
+export const Footer = styled.div`
   background-color: ${colors.yellow};
   height: 298px;
   color: ${colors.red};
@@ -19,6 +19,6 @@ export const FooterStyles = styled.div`
   }
 `
 
-export const SocialImgStyles = styled.img`
+export const SocialImg = styled.img`
   margin-top: 32px;
 `

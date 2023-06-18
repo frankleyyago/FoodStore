@@ -1,8 +1,8 @@
-import * as S from './styles'
-
 import favStar from '../../assets/images/star.svg'
 import Tag from '../Tag'
 import Button from '../Button'
+
+import * as S from './styles'
 
 type Props = {
   restaurant: string
@@ -30,25 +30,22 @@ const Restaurants = ({
 
   return (
     <div>
-      <S.CardStyles>
+      <S.Card>
         <img src={image} alt={restaurant} />
-        <S.InfosStyles>
+        <S.Infos>
           {infos.map((info) => (
             <Tag key={info}>{info}</Tag>
           ))}
-        </S.InfosStyles>
-        <S.DetailStyles>
-          <S.TitleHeadStyles>
-            <S.RestaurantTitleStyles>{restaurant}</S.RestaurantTitleStyles>
+        </S.Infos>
+        <S.Detail>
+          <S.TitleHead>
+            <S.RestaurantTitle>{restaurant}</S.RestaurantTitle>
             <div>
-              <S.RestaurantTitleStyles>{score}</S.RestaurantTitleStyles>
+              <S.RestaurantTitle>{score}</S.RestaurantTitle>
               <img src={favStar} alt="Favorite star" />
             </div>
-          </S.TitleHeadStyles>
-          <S.DescriptionStyles>
-            {' '}
-            {getDescription(description)}
-          </S.DescriptionStyles>
+          </S.TitleHead>
+          <S.Description> {getDescription(description)}</S.Description>
           <Button
             type="link"
             to={`/profile/${id}`}
@@ -56,8 +53,8 @@ const Restaurants = ({
           >
             <span>Saiba mais</span>
           </Button>
-        </S.DetailStyles>
-      </S.CardStyles>
+        </S.Detail>
+      </S.Card>
     </div>
   )
 }
