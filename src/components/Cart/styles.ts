@@ -65,6 +65,13 @@ export const Sidebar = styled.aside`
   .margin-top {
     margin-top: 22px;
   }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.yellow};
+    text-align: center;
+  }
 `
 
 export const Prices = styled.div`

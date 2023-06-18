@@ -10,12 +10,13 @@ import { parseToBrl } from '../../utils'
 
 import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
+import InputMask from 'react-input-mask'
 
 import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
   const navigate = useNavigate()
 
   const [cart, setCart] = useState(true)
@@ -48,9 +49,9 @@ const Cart = () => {
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       zipCode: Yup.string()
-        .min(10, 'O nome precisa ter pelo menos 10 caracteres')
+        .min(8, 'O nome precisa ter pelo menos 10 caracteres')
         .required('O campo é obrigatório'),
-      addressNumber: Yup.string()
+      addressNumber: Yup.number()
         .min(1, 'O nome precisa ter pelo menos 1 caracteres')
         .required('O campo é obrigatório'),
       complement: Yup.string()
@@ -69,11 +70,9 @@ const Cart = () => {
         .required('O campo é obrigatório'),
       expiresMonth: Yup.string()
         .min(2, 'O campo precisa ter no minimo 2 caracteres')
-        .max(2, 'O campo precisa ter no maximo 2 caracteres')
         .required('O campo é obrigatório'),
       expiresYear: Yup.string()
-        .min(4, 'O campo precisa ter no minimo 4 caracteres')
-        .max(4, 'O campo precisa ter no maximo 4 caracteres')
+        .min(2, 'O campo precisa ter no minimo 4 caracteres')
         .required('O campo é obrigatório')
     }),
     onSubmit: (values) => {
@@ -99,12 +98,10 @@ const Cart = () => {
             }
           }
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.price
+        }))
       })
     }
   })
@@ -161,32 +158,41 @@ const Cart = () => {
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
       <S.Overlay onClick={closeCart} />
       <S.Sidebar className={cart ? '' : 'is-closed'}>
-        <ul>
-          {items.map((item) => (
-            <S.CartItem key={item.id}>
-              <img src={item.image} alt="remover item do carrinho" />
-              <div>
-                <h3>{item.menu}</h3>
-                <span>{parseToBrl(item.price)}</span>
-              </div>
-              <button type="button" onClick={() => removeItem(item.id)} />
-            </S.CartItem>
-          ))}
-        </ul>
-        <S.Prices>
-          <p>Valor total</p>
-          <p>{parseToBrl(getTotalPrice())}</p>
-        </S.Prices>
-        <Button
-          onClick={goToCartAndDelivery}
-          title="Clique aqui para continuar com a entrega"
-          type="button"
-        >
-          <span>Continuar com a entrega</span>
-        </Button>
+        {items.length > 0 ? (
+          <>
+            <ul>
+              {items.map((item) => (
+                <S.CartItem key={item.id}>
+                  <img src={item.image} alt="remover item do carrinho" />
+                  <div>
+                    <h3>{item.menu}</h3>
+                    <span>{parseToBrl(item.price)}</span>
+                  </div>
+                  <button type="button" onClick={() => removeItem(item.id)} />
+                </S.CartItem>
+              ))}
+            </ul>
+            <S.Prices>
+              <p>Valor total</p>
+              <p>{parseToBrl(getTotalPrice())}</p>
+            </S.Prices>
+            <Button
+              onClick={goToCartAndDelivery}
+              title="Clique aqui para continuar com a entrega"
+              type="button"
+            >
+              <span>Continuar com a entrega</span>
+            </Button>
+          </>
+        ) : (
+          <p className="empty-text">
+            O carrinho esta vazio, adicione pelo menos um produto para continuar
+            com a compra
+          </p>
+        )}
       </S.Sidebar>
 
-      {isSuccess ? (
+      {isSuccess && data ? (
         <S.Sidebar className={orderSuccess ? '' : 'is-closed'}>
           <h1>Pedido realizado - {data.orderId}</h1>
           <p>
@@ -266,7 +272,7 @@ const Cart = () => {
               <S.Row>
                 <S.InputGroup>
                   <label htmlFor="zipCode">CEP</label>
-                  <input
+                  <InputMask
                     id="zipCode"
                     type="text"
                     name="zipCode"
@@ -274,6 +280,7 @@ const Cart = () => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('zipCode') ? 'error' : ''}
+                    mask="99999-99"
                   />
                 </S.InputGroup>
                 <S.InputGroup>
@@ -344,7 +351,7 @@ const Cart = () => {
               <S.Row>
                 <S.InputGroup>
                   <label htmlFor="cardNumber">Número do cartão</label>
-                  <input
+                  <InputMask
                     id="cardNumber"
                     type="text"
                     name="cardNumber"
@@ -352,11 +359,12 @@ const Cart = () => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('cardNumber') ? 'error' : ''}
+                    mask="9999 9999 9999 9999"
                   />
                 </S.InputGroup>
                 <S.InputGroup className="max-width">
                   <label htmlFor="cvv">CVV</label>
-                  <input
+                  <InputMask
                     id="cvv"
                     type="text"
                     name="cvv"
@@ -364,13 +372,14 @@ const Cart = () => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('cvv') ? 'error' : ''}
+                    mask="999"
                   />
                 </S.InputGroup>
               </S.Row>
               <S.Row>
                 <S.InputGroup>
                   <label htmlFor="expiresMonth">Mês de expiração</label>
-                  <input
+                  <InputMask
                     id="expiresMonth"
                     type="text"
                     name="expiresMonth"
@@ -380,11 +389,12 @@ const Cart = () => {
                     className={
                       checkInputHasError('expiresMonth') ? 'error' : ''
                     }
+                    mask="99"
                   />
                 </S.InputGroup>
                 <S.InputGroup>
                   <label htmlFor="expiresYear">Ano de expiração</label>
-                  <input
+                  <InputMask
                     id="expiresYear"
                     type="text"
                     name="expiresYear"
@@ -392,6 +402,7 @@ const Cart = () => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     className={checkInputHasError('expiresYear') ? 'error' : ''}
+                    mask="99"
                   />
                 </S.InputGroup>
               </S.Row>
@@ -403,8 +414,11 @@ const Cart = () => {
                   }}
                   title="Clique aqui para continuar com a entrega"
                   type="button"
+                  disabled={isLoading}
                 >
-                  <span>Finalizar pagamento</span>
+                  <span>
+                    {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
+                  </span>
                 </Button>
                 <Button
                   onClick={goToDeliveryAndPayment}

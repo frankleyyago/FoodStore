@@ -48,7 +48,9 @@ const ProfileHeader = ({ isLoading }: Banner) => {
           <Link to={'/'}>
             <img src={logo} alt="eFood" />
           </Link>
-          <a onClick={openCart}>{items.length} produto(s) no carrinho</a>
+          <a role="button" onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </a>
         </div>
       </S.ProfileHeader>
       <S.BannerRestaurant style={{ backgroundImage: `url(${banner.capa})` }}>

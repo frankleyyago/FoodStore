@@ -42,6 +42,10 @@ interface RestaurantResponse {
   cardapio: Menu[]
 }
 
+type PurchaseResponse = {
+  orderId: string
+}
+
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
@@ -54,7 +58,7 @@ const api = createApi({
       query: (id) => `restaurantes/${id}`,
       transformResponse: (response: RestaurantResponse) => response.cardapio
     }),
-    purchase: builder.mutation<any, PurchasePayload>({
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',
