@@ -8,14 +8,16 @@ import { RootReducer } from '../../store'
 import logo from '../../assets/images/logo.svg'
 
 import * as S from './styles'
+import Loader from '../Loader'
 
 export type Banner = {
-  titulo: string
-  capa: string
-  tipo: string
+  titulo?: string
+  capa?: string
+  tipo?: string
+  isLoading: boolean
 }
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ isLoading }: Banner) => {
   const dispatch = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.cart)
 
@@ -34,8 +36,8 @@ const ProfileHeader = () => {
       })
   }, [id])
 
-  if (!banner) {
-    return <h3>Carregando...</h3>
+  if (isLoading) {
+    return <Loader />
   }
 
   return (

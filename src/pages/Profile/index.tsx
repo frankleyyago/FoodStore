@@ -12,19 +12,19 @@ export type Menu = {
   porcao: string
 }
 
-const Profile = () => {
-  const { id } = useParams()
-  const { data: menu } = useGetMenuListQuery(id!)
+type MenuParams = {
+  id: string
+}
 
-  if (!menu) {
-    return <h3>Carregando...</h3>
-  }
+const Profile = () => {
+  const { id } = useParams() as MenuParams
+  const { data: menu, isLoading } = useGetMenuListQuery(id)
 
   return (
     <>
-      <ProfileHeader />
+      <ProfileHeader isLoading={isLoading} />
       <div className="container">
-        <MenuList menus={menu} />
+        <MenuList isLoading={isLoading} menus={menu} />
       </div>
     </>
   )
