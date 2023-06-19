@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import InputMask from 'react-input-mask'
 
 import Button from '../Button'
 import { close, remove } from '../../store/reducers/cart'
@@ -10,7 +11,7 @@ import { parseToBrl } from '../../utils'
 
 import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
-import InputMask from 'react-input-mask'
+import { clear } from '../../store/reducers/cart'
 
 import * as S from './styles'
 
@@ -107,7 +108,7 @@ const Cart = () => {
   })
 
   const goToCartAndDelivery = () => {
-    if (items.length === 0) {
+    if (items.length === 0 && !isSuccess) {
       return closeCart()
     } else {
       setCart(!cart)
@@ -126,6 +127,10 @@ const Cart = () => {
   }
 
   const finishPurchase = () => {
+    setCart(true)
+    setDelivery(false)
+    setPayment(false)
+    setOrderSuccess(false)
     navigate('/')
     closeCart()
   }
@@ -153,6 +158,12 @@ const Cart = () => {
 
     return hasError
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
 
   return (
     <S.CartContainer className={isOpen ? 'is-open' : ''}>
