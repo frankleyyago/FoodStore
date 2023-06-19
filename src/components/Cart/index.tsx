@@ -133,6 +133,7 @@ const Cart = () => {
     setOrderSuccess(false)
     navigate('/')
     closeCart()
+    window.location.reload()
   }
 
   const dispatch = useDispatch()
