@@ -117,13 +117,30 @@ const Cart = () => {
   }
 
   const goToDeliveryAndPayment = () => {
-    setDelivery(!delivery)
-    setPayment(!payment)
+    if (
+      !form.errors.receiver &&
+      !form.errors.address &&
+      !form.errors.city &&
+      !form.errors.zipCode &&
+      !form.errors.addressNumber &&
+      !form.errors.complement
+    ) {
+      setDelivery(!delivery)
+      setPayment(!payment)
+    }
   }
 
   const goToPaymentAndOrderSuccess = () => {
-    setPayment(!payment)
-    setOrderSuccess(!orderSuccess)
+    if (
+      !form.errors.cardOwner &&
+      !form.errors.cardNumber &&
+      !form.errors.cvv &&
+      !form.errors.expiresMonth &&
+      !form.errors.expiresYear
+    ) {
+      setPayment(!payment)
+      setOrderSuccess(!orderSuccess)
+    }
   }
 
   const finishPurchase = () => {
@@ -325,13 +342,17 @@ const Cart = () => {
                 </S.InputGroup>
               </S.Row>
               <S.ButtonContainer>
-                <Button
-                  onClick={goToDeliveryAndPayment}
-                  title="Clique aqui para continuar com a entrega"
-                  type="button"
-                >
-                  <span>Continuar com o pagamento</span>
-                </Button>
+                {form.dirty ? (
+                  <Button
+                    onClick={goToDeliveryAndPayment}
+                    title="Clique aqui para continuar com a entrega"
+                    type="button"
+                  >
+                    <span>Continuar com o pagamento</span>
+                  </Button>
+                ) : (
+                  ''
+                )}
                 <Button
                   onClick={goToCartAndDelivery}
                   title="Clique aqui para continuar com a entrega"
